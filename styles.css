@@ -67,17 +67,68 @@ body::after {
   padding: 1rem;
 }
 
-.scene-card {
+.start-card,
+.scene-card,
+.reveal-card {
   width: min(100%, 28rem);
+  border-radius: 2rem;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+}
+
+.start-card {
+  min-height: calc(100vh - 2rem);
+  display: grid;
+  align-content: center;
+  gap: 1.1rem;
+  padding: 2rem 1.4rem;
+  text-align: center;
+  background:
+    radial-gradient(circle at top, rgba(255, 204, 114, 0.12), transparent 34%),
+    linear-gradient(180deg, rgba(29, 22, 52, 0.96), rgba(14, 11, 26, 0.9));
+}
+
+.start-title {
+  margin: 0;
+  font-size: clamp(2.6rem, 12vw, 4.3rem);
+  line-height: 0.92;
+}
+
+.start-text {
+  margin: 0 auto;
+  max-width: 17rem;
+  color: rgba(245, 239, 233, 0.76);
+  line-height: 1.7;
+}
+
+.start-button {
+  width: min(100%, 14rem);
+  margin: 0.2rem auto 0;
+  padding: 1rem 1.2rem;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ffd27a, #ff8f6d);
+  color: #1b1227;
+  font: inherit;
+  font-weight: 800;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 18px 38px rgba(255, 151, 97, 0.28);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.start-button:hover,
+.start-button:focus-visible {
+  transform: translateY(-1px);
+}
+
+.scene-card {
   min-height: calc(100vh - 2rem);
   display: grid;
   align-content: space-between;
   padding: 2rem 1.25rem 1.4rem;
-  border-radius: 2rem;
   background: var(--card);
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow);
-  backdrop-filter: blur(16px);
   transition: opacity 600ms ease, transform 600ms ease;
 }
 
@@ -222,11 +273,7 @@ body::after {
   width: min(100%, 32rem);
   min-height: calc(100vh - 2rem);
   padding: 1.8rem 1.25rem 2rem;
-  border-radius: 2rem;
   background: rgba(22, 17, 40, 0.9);
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow);
-  backdrop-filter: blur(16px);
   opacity: 0;
   transform: translateY(20px);
 }
@@ -262,28 +309,65 @@ body::after {
   line-height: 1.65;
 }
 
-.photo-grid {
+.photo-slider {
   display: grid;
-  gap: 0.9rem;
+  gap: 1rem;
 }
 
-.photo-card {
-  margin: 0;
+.slider-window {
   overflow: hidden;
-  border-radius: 1.6rem;
+  border-radius: 1.75rem;
   border: 1px solid rgba(255, 255, 255, 0.09);
-  background: rgba(255, 255, 255, 0.04);
+  background:
+    radial-gradient(circle at top, rgba(255, 183, 125, 0.1), transparent 36%),
+    rgba(255, 255, 255, 0.04);
 }
 
-.photo-image {
+.slider-track {
+  display: flex;
+  transition: transform 500ms ease;
+}
+
+.slide {
+  flex: 0 0 100%;
+  margin: 0;
+  min-width: 0;
+  display: grid;
+  place-items: center;
+  padding: 0.75rem;
+}
+
+.slide-image {
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
+  max-width: 100%;
+  height: min(64vh, 34rem);
+  object-fit: contain;
+  object-position: center;
+  border-radius: 1.25rem;
 }
 
-.photo-card-wide .photo-image {
-  aspect-ratio: 16 / 10;
+.slider-dots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.slider-dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.22);
+  cursor: pointer;
+  transition: transform 180ms ease, background-color 180ms ease;
+}
+
+.slider-dot.active {
+  background: #ffd07a;
+  transform: scale(1.15);
 }
 
 @keyframes flicker {
@@ -301,6 +385,7 @@ body::after {
 }
 
 @media (min-width: 720px) {
+  .start-card,
   .scene-card {
     width: min(100%, 32rem);
     padding: 2.5rem 2rem 1.6rem;
@@ -311,12 +396,8 @@ body::after {
     padding: 2.5rem 2rem;
   }
 
-  .photo-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .photo-card-wide {
-    grid-column: span 2;
+  .slide-image {
+    height: min(62vh, 38rem);
   }
 }
 

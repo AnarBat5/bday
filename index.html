@@ -18,7 +18,16 @@
   </head>
   <body>
     <main class="stage" aria-label="Birthday cake scene">
-      <section class="scene-card" id="sceneCard">
+      <section class="start-card" id="startCard">
+        <p class="eyebrow">Birthday Surprise</p>
+        <h1 class="start-title">A tiny surprise for my favorite girl.</h1>
+        <p class="start-text">
+          Press once, make a wish, and then just blow.
+        </p>
+        <button class="start-button" id="startButton" type="button">Start</button>
+      </section>
+
+      <section class="scene-card hidden" id="sceneCard">
         <div class="cake-scene" aria-hidden="true">
           <div class="glow"></div>
           <div class="candle">
@@ -48,29 +57,43 @@
           A small page full of you.
         </p>
 
-        <div class="photo-grid">
-          <figure class="photo-card">
-            <img src="1000042482.jpg" alt="Birthday photo 1" class="photo-image" />
-          </figure>
-          <figure class="photo-card">
-            <img src="1000042478.jpg" alt="Birthday photo 2" class="photo-image" />
-          </figure>
-          <figure class="photo-card">
-            <img src="1000042480.jpg" alt="Birthday photo 3" class="photo-image" />
-          </figure>
-          <figure class="photo-card">
-            <img src="1000042097.jpg" alt="Birthday photo 4" class="photo-image" />
-          </figure>
-          <figure class="photo-card">
-            <img src="1000042014.jpg" alt="Birthday photo 5" class="photo-image" />
-          </figure>
-          <figure class="photo-card">
-            <img src="1000042009.jpg" alt="Birthday photo 6" class="photo-image" />
-          </figure>
-          <figure class="photo-card photo-card-wide">
-            <img src="1000042012.jpg" alt="Birthday photo 7" class="photo-image" />
-          </figure>
-        </div>
+        <section class="photo-slider" aria-label="Birthday photo slider">
+          <div class="slider-window">
+            <div class="slider-track" id="sliderTrack">
+              <figure class="slide">
+                <img src="1000042482.jpg" alt="Birthday photo 1" class="slide-image" />
+              </figure>
+              <figure class="slide">
+                <img src="1000042478.jpg" alt="Birthday photo 2" class="slide-image" />
+              </figure>
+              <figure class="slide">
+                <img src="1000042480.jpg" alt="Birthday photo 3" class="slide-image" />
+              </figure>
+              <figure class="slide">
+                <img src="1000042097.jpg" alt="Birthday photo 4" class="slide-image" />
+              </figure>
+              <figure class="slide">
+                <img src="1000042014.jpg" alt="Birthday photo 5" class="slide-image" />
+              </figure>
+              <figure class="slide">
+                <img src="1000042009.jpg" alt="Birthday photo 6" class="slide-image" />
+              </figure>
+              <figure class="slide">
+                <img src="1000042012.jpg" alt="Birthday photo 7" class="slide-image" />
+              </figure>
+            </div>
+          </div>
+
+          <div class="slider-dots" id="sliderDots" aria-label="Photo positions">
+            <button class="slider-dot active" type="button" data-slide="0" aria-label="Show photo 1"></button>
+            <button class="slider-dot" type="button" data-slide="1" aria-label="Show photo 2"></button>
+            <button class="slider-dot" type="button" data-slide="2" aria-label="Show photo 3"></button>
+            <button class="slider-dot" type="button" data-slide="3" aria-label="Show photo 4"></button>
+            <button class="slider-dot" type="button" data-slide="4" aria-label="Show photo 5"></button>
+            <button class="slider-dot" type="button" data-slide="5" aria-label="Show photo 6"></button>
+            <button class="slider-dot" type="button" data-slide="6" aria-label="Show photo 7"></button>
+          </div>
+        </section>
       </section>
     </main>
 
