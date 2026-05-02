@@ -4,6 +4,10 @@
   --card: rgba(21, 16, 38, 0.82);
   --line: rgba(255, 255, 255, 0.08);
   --text: #f5efe9;
+  --text-soft: rgba(245, 239, 233, 0.76);
+  --gold: #ffd47f;
+  --rose: #ffb6c8;
+  --peach: #ff9e74;
   --cake-top: #fff0e5;
   --cake-middle: #ff8f7b;
   --cake-bottom: #f05c6d;
@@ -32,6 +36,22 @@ body {
     radial-gradient(circle at top, rgba(255, 171, 112, 0.14), transparent 24%),
     radial-gradient(circle at 20% 30%, rgba(255, 225, 134, 0.1), transparent 18%),
     linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
+}
+
+body {
+  background-attachment: fixed;
+}
+
+body > .stage::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(255, 255, 255, 0.12) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 78% 12%, rgba(255, 255, 255, 0.08) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 86% 34%, rgba(255, 212, 127, 0.16) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 22% 82%, rgba(255, 182, 200, 0.12) 0 1px, transparent 1.5px);
 }
 
 body::before,
@@ -70,11 +90,37 @@ body::after {
 .start-card,
 .scene-card,
 .reveal-card {
+  position: relative;
+  overflow: hidden;
   width: min(100%, 28rem);
   border-radius: 2rem;
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
   backdrop-filter: blur(16px);
+}
+
+.start-card::before,
+.scene-card::before,
+.reveal-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 24%);
+  pointer-events: none;
+}
+
+.start-card::after,
+.scene-card::after,
+.reveal-card::after {
+  content: "";
+  position: absolute;
+  width: 14rem;
+  height: 14rem;
+  right: -5rem;
+  top: -5rem;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255, 207, 121, 0.18), transparent 64%);
+  pointer-events: none;
 }
 
 .start-card {
@@ -91,14 +137,18 @@ body::after {
 
 .start-title {
   margin: 0;
+  font-family: "Cormorant Garamond", serif;
   font-size: clamp(2.6rem, 12vw, 4.3rem);
   line-height: 0.92;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+  text-shadow: 0 10px 26px rgba(0, 0, 0, 0.28);
 }
 
 .start-text {
   margin: 0 auto;
   max-width: 17rem;
-  color: rgba(245, 239, 233, 0.76);
+  color: var(--text-soft);
   line-height: 1.7;
 }
 
@@ -108,19 +158,24 @@ body::after {
   padding: 1rem 1.2rem;
   border: 0;
   border-radius: 999px;
-  background: linear-gradient(135deg, #ffd27a, #ff8f6d);
+  background: linear-gradient(135deg, var(--gold), var(--peach));
   color: #1b1227;
   font: inherit;
   font-weight: 800;
   font-size: 1rem;
   cursor: pointer;
-  box-shadow: 0 18px 38px rgba(255, 151, 97, 0.28);
+  box-shadow:
+    0 18px 38px rgba(255, 151, 97, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
   transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
 .start-button:hover,
 .start-button:focus-visible {
-  transform: translateY(-1px);
+  transform: translateY(-1px) scale(1.01);
+  box-shadow:
+    0 22px 44px rgba(255, 151, 97, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.42);
 }
 
 .scene-card {
@@ -243,6 +298,7 @@ body::after {
   font-size: clamp(1rem, 4.5vw, 1.25rem);
   font-weight: 800;
   letter-spacing: 0.03em;
+  text-shadow: 0 8px 22px rgba(0, 0, 0, 0.2);
 }
 
 .meter {
@@ -273,7 +329,9 @@ body::after {
   width: min(100%, 32rem);
   min-height: calc(100vh - 2rem);
   padding: 1.8rem 1.25rem 2rem;
-  background: rgba(22, 17, 40, 0.9);
+  background:
+    radial-gradient(circle at top, rgba(255, 196, 129, 0.08), transparent 28%),
+    rgba(22, 17, 40, 0.9);
   opacity: 0;
   transform: translateY(20px);
 }
@@ -285,27 +343,36 @@ body::after {
 }
 
 .eyebrow {
-  margin: 0 0 0.5rem;
+  margin: 0 auto 0.75rem;
+  width: fit-content;
+  padding: 0.42rem 0.8rem;
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  color: rgba(255, 215, 156, 0.85);
+  color: rgba(255, 215, 156, 0.92);
   font-size: 0.78rem;
   font-weight: 800;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .reveal-title {
   margin: 0;
   text-align: center;
+  font-family: "Cormorant Garamond", serif;
   font-size: clamp(2.2rem, 9vw, 3.4rem);
   line-height: 0.96;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+  text-shadow: 0 12px 26px rgba(0, 0, 0, 0.26);
 }
 
 .reveal-text {
   margin: 0.9rem auto 1.4rem;
   max-width: 24rem;
   text-align: center;
-  color: rgba(245, 239, 233, 0.76);
+  color: var(--text-soft);
   line-height: 1.65;
 }
 
@@ -318,6 +385,9 @@ body::after {
   overflow: hidden;
   border-radius: 1.75rem;
   border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    0 16px 40px rgba(0, 0, 0, 0.2);
   background:
     radial-gradient(circle at top, rgba(255, 183, 125, 0.1), transparent 36%),
     rgba(255, 255, 255, 0.04);
@@ -345,6 +415,7 @@ body::after {
   object-fit: contain;
   object-position: center;
   border-radius: 1.25rem;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
 }
 
 .slider-dots {
@@ -360,14 +431,16 @@ body::after {
   padding: 0;
   border: 0;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.18);
   cursor: pointer;
-  transition: transform 180ms ease, background-color 180ms ease;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  transition: transform 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
 }
 
 .slider-dot.active {
-  background: #ffd07a;
+  background: var(--gold);
   transform: scale(1.15);
+  box-shadow: 0 0 0 4px rgba(255, 212, 127, 0.14);
 }
 
 @keyframes flicker {
@@ -394,6 +467,11 @@ body::after {
   .reveal-card {
     width: min(100%, 44rem);
     padding: 2.5rem 2rem;
+  }
+
+  .start-title {
+    max-width: 24rem;
+    margin-inline: auto;
   }
 
   .slide-image {
