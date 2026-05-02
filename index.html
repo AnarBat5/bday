@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Birthday Surprise</title>
+    <meta
+      name="description"
+      content="A birthday page with a cake, candle, and microphone blow prompt."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="stage" aria-label="Birthday cake scene">
+      <section class="scene-card" id="sceneCard">
+        <div class="cake-scene" aria-hidden="true">
+          <div class="glow"></div>
+          <div class="candle">
+            <div class="flame" id="flame"></div>
+            <div class="wick"></div>
+            <div class="wax"></div>
+          </div>
+          <div class="cake">
+            <div class="icing"></div>
+            <div class="cake-body"></div>
+            <div class="plate"></div>
+          </div>
+        </div>
+
+        <p class="prompt" id="promptText">Микрофон руу үлээгээрэй</p>
+        <div class="meter" aria-hidden="true">
+          <div class="meter-track">
+            <div class="meter-fill" id="meterFill"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="reveal-card hidden" id="revealCard">
+        <p class="eyebrow">For You</p>
+        <h1 class="reveal-title">Happy Birthday my beautiful girlfriend!</h1>
+        <p class="reveal-text">
+          This page is for you. Replace these frames with your favorite photos together.
+        </p>
+
+        <div class="photo-grid">
+          <figure class="photo-card">
+            <div class="photo-placeholder">Photo 1</div>
+          </figure>
+          <figure class="photo-card">
+            <div class="photo-placeholder">Photo 2</div>
+          </figure>
+          <figure class="photo-card photo-card-wide">
+            <div class="photo-placeholder">Photo 3</div>
+          </figure>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
