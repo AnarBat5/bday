@@ -269,20 +269,21 @@ body::after {
 
 .photo-card {
   margin: 0;
-}
-
-.photo-placeholder {
-  min-height: 12rem;
-  display: grid;
-  place-items: center;
+  overflow: hidden;
   border-radius: 1.6rem;
   border: 1px solid rgba(255, 255, 255, 0.09);
-  background:
-    radial-gradient(circle at top, rgba(255, 183, 125, 0.12), transparent 36%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
-  color: rgba(245, 239, 233, 0.7);
-  font-size: 1rem;
-  font-weight: 700;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.photo-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.photo-card-wide .photo-image {
+  aspect-ratio: 16 / 10;
 }
 
 @keyframes flicker {
